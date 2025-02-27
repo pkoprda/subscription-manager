@@ -21,7 +21,9 @@ log = logging.getLogger(__name__)
 class FactsDict(collections.abc.MutableMapping):
     """A dict for facts that ignores items in 'graylist' on compares."""
 
-    graylist = set(["cpu.cpu_mhz", "lscpu.cpu_mhz"])
+    graylist = set(
+        ["cpu.cpu_mhz", "lscpu.cpu_mhz", "proc_cpuinfo.common.cpu_mhz", "lscpu.cpu(s)_scaling_mhz"]
+    )
 
     def __init__(self, *args, **kwargs):
         super(FactsDict, self).__init__(*args, **kwargs)

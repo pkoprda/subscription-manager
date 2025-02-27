@@ -46,7 +46,12 @@ class Facts(CacheManager):
         # can change constantly on laptops, it makes for a lot of
         # fact churn, so we report it, but ignore it as an indicator
         # that we need to update
-        self.graylist: List[str] = ["cpu.cpu_mhz", "lscpu.cpu_mhz"]
+        self.graylist: List[str] = [
+            "cpu.cpu_mhz",
+            "lscpu.cpu_mhz",
+            "proc_cpuinfo.common.cpu_mhz",
+            "lscpu.cpu(s)_scaling_mhz",
+        ]
 
         # plugin manager so we can add custom facts via plugin
         self.plugin_manager: PluginManager = require(PLUGIN_MANAGER)
